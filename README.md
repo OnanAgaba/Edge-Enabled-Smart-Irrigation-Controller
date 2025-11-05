@@ -34,25 +34,9 @@ The following are the major units of the system and their respective components.
 ## 3. Documented Code
 
 ### 3.1 Code Overview
-
 The main script `crop_water_stress.py` performs the following:
 
-**a. Sensor Initialization**  
-   - Initializes MLX90640 thermal camera (I2C), DHT22, and TDR-305N (SDI-12) sensors.
-     
-**b. Data Capture**  
-   - Captures a 24×32 thermal image.  
-   - Reads ambient temperature, humidity, and soil moisture.
-     
-**c. Stress Index Calculation**  
-   - **CWSI**: based on canopy temperature, air temperature, and relative humidity.  
-   - **SMSI**: based on soil moisture relative to field capacity and wilting point.
-     
-**d. Decision Logic**  
-   - If **CWSI > 0.5** or **SMSI > 0.6**, the solenoid valve is opened for irrigation.
-     
-**e. Continuous Loop**  
-   - The system continuously monitors stress indices and updates irrigation actions in real-time.
+<img width="1719" height="2698" alt="irrigation" src="https://github.com/user-attachments/assets/bd256a72-6dc2-4362-9fec-9ebc78bdd014" />
 
 ---
 
