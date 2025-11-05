@@ -81,7 +81,7 @@ The program prints CWSI and SMSI values to the console.
 Irrigation is automatically triggered based on thresholds.
 
 ## 4. Visualization 
-An interactive web dashboard and mobile app are under development and testing 
+An interactive web dashboard and mobile app are still under development and testing 
 
 
 
