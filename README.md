@@ -1,6 +1,5 @@
 # Edge-Enabled-Smart-Irrigation-Controller
-Solar-powered system for real-time crop water stress monitoring
-
+A low-cost open-source solar-powered system for real-time crop water stress monitoring
 
 ## 1. Project Overview
 This project implements a **real-time crop water stress detection and irrigation control system** using a Raspberry Pi 5. It integrates:
