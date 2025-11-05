@@ -84,3 +84,7 @@ An interactive web dashboard and mobile app are under development and testing
 
 
 
+
+## Contact
+*For questions, contact: [Onan Agaba](mailto:onanagaba@gmail.com)*
+
