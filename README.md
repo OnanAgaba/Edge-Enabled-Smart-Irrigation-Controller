@@ -70,8 +70,10 @@ sudo apt install python3-pip
 pip3 install numpy RPi.GPIO adafruit-circuitpython-mlx90640 tensorflow
 ```
 **c. Connect Sensors and Actuators**
-Follow the wiring tables provided above. 
+
+Follow the wiring tables provided in the `wiring.md`. 
 Ensure the MLX90640, DHT22, TDR, and solenoid valve are connected to correct GPIO/I2C pins.
+
 **d. Run the Code**
 ```
 python3 crop_water_stress.py
