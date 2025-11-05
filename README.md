@@ -46,7 +46,7 @@ The main script `crop_water_stress.py` performs the following:
 git clone https://github.com/OnanAgaba/Edge-Enabled-Smart-Irrigation-Controller.git
 cd Edge-Enabled-Smart-Irrigation-Controller
 ```
-**b. Install Depenedences**
+**b. Install Dependences**
 ```
 sudo apt update
 sudo apt install python3-pip
