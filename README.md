@@ -2,7 +2,7 @@
 Solar-powered system for real-time crop water stress monitoring
 
 
-# Project Overview
+# 1. Project Overview
 This project implements a **real-time crop water stress detection and irrigation control system** using a Raspberry Pi 5. It integrates:
 
 - **MLX90640 thermal camera** for canopy temperature monitoring  
@@ -15,42 +15,44 @@ The system calculates the **Crop Water Stress Index (CWSI)** and **Soil Moisture
 
 <img width="2762" height="1812" alt="circuit_image (1)" src="https://github.com/user-attachments/assets/1b2b7723-1920-4c89-b907-6166f928d6c0" />
 
-# Components
-The following are the major units of the systems and their respective components
-1. Power Unit
+# 2. Components
+The following are the major units of the system and their respective components.
 
-| Component | Description | Pins | Estimated Cost (USD) |
-|------------|--------------|------|----------------------|
-| **Solar Panel (6V)** | Provides renewable energy to charge the battery and power the system. | +, - | $ — |
-| **Adafruit BQ24074 Solar-DC-USB LiPo Charger** | Manages solar/USB input to safely charge the LiPo battery and power the load. | D+, D-, GND, VLIPO, OUT, !CHG, !PGOOD, !CE, ISET, THERM, VBUS | $ — |
-| **LiPo Battery Pack (3S)** | Main energy storage and backup power source during low sunlight. | +, - | $ — |
-| **3S 10A Li-ion 18650 Charger Protection Board (BMS Module)** | Protects and balances the 3-cell Li-ion battery pack during charging and discharging. | B+, B2, B1, P-, P+, B- | $ — |
-| **24/12V Buck Converter** | Steps down input voltage to 5V for powering the Raspberry Pi. | VIN+, VIN-, 5V, GND | $ — |
-| **Adafruit MiniBoost 5V 100mA Charge Pump (AP3602A)** | Boost converter providing 5V output from a lower voltage input. | !SHDN, 5.0V, GND, VIN | $ — |
+## 2.1 Power Unit
 
----
-
-2. Control Unit
-
-| Component | Description | Pins | Estimated Cost (USD) |
-|------------|--------------|------|----------------------|
-| **Raspberry Pi 5** | Central processing and control unit; runs CNN model for edge data processing and system management. | Type-C, Micro HDMI 1 & 2, Camera 1 & 2, PoE, Fan, PCIe, USB 3.0/2.0, Ethernet, 5V, GND, 3.3V, multiple GPIOs | $ — |
+| Component | Description | Estimated Cost (USD) |
+|------------|--------------|----------------------|
+| **Solar Panel (6V)** | Provides renewable energy to charge the battery and power the system. | $ — |
+| **Adafruit BQ24074 Solar-DC-USB LiPo Charger** | Manages solar/USB input to safely charge the LiPo battery and power the load. | $ — |
+| **LiPo Battery Pack (3S)** | Main energy storage and backup power source during low sunlight. | $ — |
+| **3S 10A Li-ion 18650 Charger Protection Board (BMS Module)** | Protects and balances the 3-cell Li-ion battery pack during charging and discharging. | $ — |
+| **24/12V Buck Converter** | Steps down input voltage to 5V for powering the Raspberry Pi. | $ — |
+| **Adafruit MiniBoost 5V 100mA Charge Pump (AP3602A)** | Boost converter providing 5V output from a lower voltage input. | $ — |
 
 ---
 
-3.  Sensing Unit
+## 2.2 Control Unit
 
-| Component | Description | Pins | Estimated Cost (USD) |
-|------------|--------------|------|----------------------|
-| **Adafruit MLX90640 Thermal Camera** | Captures thermal data for crop canopy temperature analysis. | VCC, 3.3V, GND, SCL, SDA | $ — |
-| **DHT22 Sensor** | Measures ambient temperature and humidity. | GND, VCC, DAT | $ — |
-| **TDR-305N Soil Moisture Sensor** | Measures soil volumetric water content using time-domain reflectometry. | Pin 1, Pin 2, Pin 3 | $ — |
-| **Solenoid Electrovalve (5V)** | Electrically controlled valve for irrigation management. | VCC, GND | $ — |
+| Component | Description | Estimated Cost (USD) |
+|------------|--------------|----------------------|
+| **Raspberry Pi 5** | Central processing and control unit; runs CNN model for edge data processing and system management. | $ — |
 
 ---
 
-# Wiring Details
-1. Power Unit Wiring
+## 2.3 Sensing Unit
+
+| Component | Description | Estimated Cost (USD) |
+|------------|--------------|----------------------|
+| **Adafruit MLX90640 Thermal Camera** | Captures thermal data for crop canopy temperature analysis. | $ — |
+| **DHT22 Sensor** | Measures ambient temperature and humidity. | $ — |
+| **TDR-305N Soil Moisture Sensor** | Measures soil volumetric water content using time-domain reflectometry. | $ — |
+| **Solenoid Electrovalve (5V)** | Electrically controlled valve for irrigation management. | $ — |
+
+---
+
+
+# 3. Wiring Details
+## 3.1 Power Unit Wiring
 
 | Component | Pin | Connected To |
 |------------|-----|--------------|
@@ -76,7 +78,7 @@ The following are the major units of the systems and their respective components
 
 ---
 
-2. Control Unit Wiring
+## 3.2 Control Unit Wiring
 
 | Component | Pin | Connected To |
 |------------|-----|--------------|
@@ -92,7 +94,7 @@ The following are the major units of the systems and their respective components
 
 ---
 
-3. Sensing Unit Wiring
+## 3.3 Sensing Unit Wiring
 
 | Sensor | Pin | Connected To |
 |---------|-----|--------------|
@@ -107,56 +109,53 @@ The following are the major units of the systems and their respective components
 |  | Pin 2 | GPIO 6 on Raspberry Pi |
 |  | Pin 3 | GND on Raspberry Pi |
 
-# Documented Code
-The system captures real-time data from an MLX90640 thermal camera, a DHT22 temperature and humidity sensor, and a TDR-305N soil moisture sensor on a Raspberry Pi 5. It calculates the Crop Water Stress Index (CWSI) from canopy and air temperature and relative humidity, and the Soil Moisture Stress Index (SMSI) from soil moisture relative to field capacity and wilting point. If either index exceeds predefined thresholds, the solenoid valve is automatically activated to irrigate the crop, delivering water for a specified duration. The process repeats continuously, enabling real-time monitoring and edge-based irrigation control for optimal crop water management.
-
-# Mobile App and Web Application
-Under development and testing
-
-
-
-## 🖥️ Code Overview
-
+# 4. Documented Code
+## 4.1 Code Overview
 The main script `crop_water_stress.py` performs the following:
 
-1. **Sensor Initialization**  
-   - Initializes MLX90640 thermal camera (I2C), DHT22, and TDR-305N sensors.  
-2. **Data Capture**  
+a. **Sensor Initialization**  
+   - Initializes MLX90640 thermal camera (I2C), DHT22, and TDR-305N sensors.
+     
+b. **Data Capture**  
    - Captures a 24×32 thermal image.  
-   - Reads ambient temperature, humidity, and soil moisture.  
-3. **Stress Index Calculation**  
+   - Reads ambient temperature, humidity, and soil moisture.
+     
+c. **Stress Index Calculation**  
    - **CWSI**: based on canopy temp, air temp, and relative humidity.  
-   - **SMSI**: based on soil moisture relative to field capacity and wilting point.  
-4. **Decision Logic**  
-   - If **CWSI > 0.5** or **SMSI > 0.6**, the solenoid valve is opened for irrigation.  
-5. **Continuous Loop**  
+   - **SMSI**: based on soil moisture relative to field capacity and wilting point.
+     
+d. **Decision Logic**  
+   - If **CWSI > 0.5** or **SMSI > 0.6**, the solenoid valve is opened for irrigation.
+     
+e. **Continuous Loop**
    - The system continuously monitors stress indices and updates irrigation actions in real-time.
-
 ---
+## 4.2 Setup and Usage
 
-## ⚙️ Setup and Usage
-
-### 1. Clone the Repository
+### a. Clone the Repository
 ```bash
 git clone https://github.com/yourusername/crop-water-stress-system.git
 cd crop-water-stress-system
 ```
-
-### 2. Install Depenedences
+### b. Install Depenedences
 ```
 sudo apt update
 sudo apt install python3-pip
 pip3 install numpy RPi.GPIO adafruit-circuitpython-mlx90640
 ```
-
-### 3. Connect Sensors and Actuators
+### c. Connect Sensors and Actuators
 Follow the wiring tables provided above. 
 Ensure the MLX90640, DHT22, TDR, and solenoid valve are connected to correct GPIO/I2C pins.
-
-### 4. Run the Code
+### d. Run the Code
 ```
 python3 crop_water_stress.py
 ```
 The program prints CWSI and SMSI values to the console.
 Irrigation is automatically triggered based on thresholds.
+
+# 5. Mobile App and Web Application
+An interactive web dashboard is under development and testing
+
+
+
 
