@@ -1,8 +1,10 @@
 # Edge-Enabled-Smart-Irrigation-Controller
-A low-cost open-source solar-powered system for real-time crop water stress monitoring
+A low-cost open-source solar-powered system for real-time crop water stress monitoring using a Convolutional Neural Network
 
 ## 1. Project Overview
-This project implements a **real-time crop water stress detection and irrigation control system** using a Raspberry Pi 5. It integrates:
+This project implements a **real-time crop water stress detection and irrigation control system** using a CNN deployed on Raspberry Pi 5 for real-time image analysis. 
+
+It integrates:
 
 - **MLX90640 thermal camera** for canopy temperature monitoring  
 - **DHT22** for ambient temperature and humidity  
@@ -16,19 +18,18 @@ The system calculates the **Crop Water Stress Index (CWSI)** and **Soil Moisture
 
 ## 2. Components
 The following are the major units of the system and their respective components.
-| Unit | Component | Description | Cost (USD) |
-|------|-----------|-------------|------------|
-| Power | Solar Panel (6V) | Charges battery & powers system | $ — |
-| Power | Adafruit BQ24074 LiPo Charger | Safely charges LiPo & powers load | $ — |
-| Power | LiPo Battery Pack (3S) | Backup power | $ — |
-| Power | 3S 10A Li-ion BMS | Protects & balances battery | $ — |
-| Power | 24/12V Buck Converter | Steps down voltage to 5V | $ — |
-| Power | Adafruit MiniBoost 5V 100mA | Boost converter 5V output | $ — |
-| Control | Raspberry Pi 5 | Main processor; runs CNN & controls system | $ — |
-| Sensing | MLX90640 Thermal Camera | Captures canopy temperature | $ — |
-| Sensing | DHT22 Sensor | Measures temperature & humidity | $ — |
-| Sensing | TDR-305N Sensor | Measures soil moisture | $ — |
-| Sensing | Solenoid Valve (5V) | Controls irrigation | $ — |
+| Unit | Component | Description |
+|------|-----------|-------------|
+| Power | Solar Panel (6V) | Charges battery & powers system | 
+| Power | Adafruit BQ24074 LiPo Charger | Safely charges LiPo & powers load | 
+| Power | LiPo Battery Pack (3S) | Backup power | 
+| Power | 3S 10A Li-ion BMS | Protects & balances battery | 
+| Power | 24/12V Buck Converter | Steps down voltage to 5V |
+| Power | Adafruit MiniBoost 5V 100mA | Boost converter 5V output |
+| Control | Raspberry Pi 5 | Main processor; runs CNN & controls system |
+| Sensing | MLX90640 Thermal Camera | Captures canopy temperature | 
+| Sensing | DHT22 Sensor | Measures temperature & humidity | 
+| Sensing | TDR-305N Sensor | Measures soil moisture | 
 
 
 ## 3. Documented Code
@@ -36,7 +37,7 @@ The following are the major units of the system and their respective components.
 ### 3.1 Code Overview
 The main script `crop_water_stress.py` performs the following:
 
-<img width="1719" height="2698" alt="irrigation" src="https://github.com/user-attachments/assets/bd256a72-6dc2-4362-9fec-9ebc78bdd014" />
+<img width="500" height="750" alt="irrigation" src="https://github.com/user-attachments/assets/bd256a72-6dc2-4362-9fec-9ebc78bdd014" />
 
 ---
 
@@ -65,7 +66,7 @@ The program prints CWSI and SMSI values to the console.
 Irrigation is automatically triggered based on thresholds.
 
 ## 4. Visualization 
-An interactive web dashboard and mobile app are still under development and testing 
+An interactive web dashboard and mobile app are still under development
 
 
 
